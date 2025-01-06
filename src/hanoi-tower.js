@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../extensions/index.js');
+
 
 /**
  * Calculate turns number and time (in seconds) required
@@ -14,9 +14,17 @@ const { NotImplementedError } = require('../extensions/index.js');
  * calculateHanoi(9, 4308) => { turns: 511, seconds: 427 }
  *
  */
-function calculateHanoi(/* disksNumber, turnsSpeed */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function calculateHanoi(disksNumber, turnsSpeed) {
+  // The minimum number of turns for Tower of Hanoi is 2^n - 1
+  const turns = Math.pow(2, disksNumber) - 1;
+
+  // Convert turnsSpeed from turns/hour to turns/second
+  const turnsPerSecond = turnsSpeed / 3600;
+
+  // Calculate number of seconds (rounded down to the nearest integer)
+  const seconds = Math.floor(turns / turnsPerSecond);
+
+  return { turns, seconds };
 }
 
 module.exports = {
